@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Formularios\Index.aspx" />
     <Content Include="Formularios\Login.aspx" />
+    <Content Include="Formularios\Perfil.aspx" />
     <Content Include="Formularios\RegistroUsuarios.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -86,6 +87,13 @@
     </Compile>
     <Compile Include="Formularios\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Perfil.aspx.cs">
+      <DependentUpon>Perfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\Perfil.aspx.designer.cs">
+      <DependentUpon>Perfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Principal.Master.cs">
       <DependentUpon>Principal.Master</DependentUpon>
