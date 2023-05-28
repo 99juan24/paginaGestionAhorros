@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BDProyecto" Class="ModeloGastosDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.gasto" Member="gasto">
+    <Type Name="gasto">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="monto" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="fecha_creacion" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="fecha_limite" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.actualizarGastos" Method="actualizarGastos">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="monto" Type="System.Double" DbType="Float" />
+    <Parameter Name="fecha_limite" Type="System.DateTime" DbType="Date" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.buscarGastos" Method="buscarGastos">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="buscarGastosResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="monto" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="fecha_creacion" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="fecha_limite" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.eliminarGastos" Method="eliminarGastos">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.insertarGastos" Method="insertarGastos">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="monto" Type="System.Double" DbType="Float" />
+    <Parameter Name="fecha_creacion" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="fecha_limite" Type="System.DateTime" DbType="Date" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

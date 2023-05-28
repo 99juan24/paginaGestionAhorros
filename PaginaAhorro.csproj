@@ -44,6 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Formularios\Gasto.aspx" />
     <Content Include="Formularios\Index.aspx" />
     <Content Include="Formularios\Login.aspx" />
     <Content Include="Formularios\Perfil.aspx" />
@@ -74,6 +76,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios\Gasto.aspx.cs">
+      <DependentUpon>Gasto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gasto.aspx.designer.cs">
+      <DependentUpon>Gasto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -87,6 +96,11 @@
     </Compile>
     <Compile Include="Formularios\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ModeloGastos.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloGastos.dbml</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Perfil.aspx.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>
@@ -113,6 +127,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Formularios\Principal.Master" />
+    <Content Include="Formularios\ModeloGastos.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>ModeloGastos.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Formularios\ModeloGastos.dbml.layout">
+      <DependentUpon>ModeloGastos.dbml</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -123,6 +145,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Imagenes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

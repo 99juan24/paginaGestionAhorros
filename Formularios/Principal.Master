@@ -15,7 +15,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body class="mask"  background="/Imagenes/fondo.png">
+<body class="mask"  bgcolor="#9CCC65">
     <form id="principal" runat="server">
         <header class="p-3 mb-3 border-bottom" style="background-color: #D1F2EB;">
         <div class="container">
@@ -30,7 +30,8 @@
                     </div>
                 </nav>
                 <ul class="nav col-12 col-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="#" class="nav-link px-2 link-secondary">Inicio</a></li>
+                    <li><a href="/Formularios/Index.aspx" class="nav-link px-2 link-secondary">Inicio</a></li>
+                    <li><a href="/Formularios/Gasto.aspx" class="nav-link px-2 link-secondary">Gastos</a></li>
                     
                 </ul>
                 

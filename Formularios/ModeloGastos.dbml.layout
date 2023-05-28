@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ModeloGastos">
+  <DataContextMoniker Name="/ModeloGastosDataContext" />
+  <nestedChildShapes>
+    <classShape Id="e067d2b1-7f5f-41a7-80e1-55b218b2a012" absoluteBounds="3.375, 1.25, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/ModeloGastosDataContext/gasto" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f9b7c9bd-3191-4793-83db-e6087e932aca" absoluteBounds="3.39, 1.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
