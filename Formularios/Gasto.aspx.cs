@@ -37,6 +37,7 @@ namespace PaginaAhorro.Formularios
         {
             txtnombre.Text = "";
             txtmonto.Text = "";
+            txtprogreso.Text = "";
             txtfechacreacion.Text = "";
             txfechalimite.Text = "";
         }
@@ -45,12 +46,18 @@ namespace PaginaAhorro.Formularios
         {
             try
             {
+
                 int codigo = int.Parse(txtid.Text);
                 String nombre = txtnombre.Text;
                 float cantidad = float.Parse(txtmonto.Text);
+                float progreso = float.Parse(txtprogreso.Text);
+                
                 DateTime fecha_creacion = DateTime.Parse(txtfechacreacion.Text);
                 DateTime fecha_limite = DateTime.Parse(txfechalimite.Text);
-                bd.insertarGastos(codigo, nombre, cantidad, fecha_creacion, fecha_limite);
+                decimal progresoDecimal = decimal.Parse(progreso.ToString());
+                ((Principal)this.Master).ActualizarPresupuesto(progresoDecimal);
+                bd.insertarGastos(codigo, nombre, cantidad, progreso, fecha_creacion, fecha_limite);
+               
                 carga();
                 limpiar();
             }
@@ -72,6 +79,7 @@ namespace PaginaAhorro.Formularios
                 {
                     txtnombre.Text = campo.nombre;
                     txtmonto.Text = campo.monto.ToString();
+                    txtprogreso.Text=campo.progreso.ToString();
                     txtfechacreacion.Text = campo.fecha_creacion.ToString();
                     txfechalimite.Text = campo.fecha_limite.ToString();
 
@@ -113,9 +121,22 @@ namespace PaginaAhorro.Formularios
                 int codigo = int.Parse(txtid.Text);
                 String nombre = txtnombre.Text;
                 float cantidad = float.Parse(txtmonto.Text);
-
+                float progreso = float.Parse(txtprogreso.Text);
                 DateTime fecha_limite = DateTime.Parse(txfechalimite.Text);
-                bd.actualizarGastos(codigo, nombre, cantidad, fecha_limite);
+                decimal progresoDecimal = decimal.Parse(progreso.ToString());
+                ((Principal)this.Master).ActualizarPresupuesto(progresoDecimal);
+                string estado = "En progreso";
+                if (progreso == cantidad)
+                {
+                    estado = "Completado";
+                    // Mostrar mensaje al usuario
+                    Response.Write("<script>alert('¡Has completado el gasto! Puedes eliminarlo si lo deseas.');</script>");
+
+                    // Mostrar botón para eliminar el gasto
+                    btnEliminar.Visible = true;
+                }
+
+                bd.actualizarGastos(codigo, nombre, cantidad, progreso, fecha_limite, estado);
                 carga();
                 limpiar();
             }
@@ -124,5 +145,8 @@ namespace PaginaAhorro.Formularios
                 Response.Write("<script>alert('Error en la información...!!!');</script>");
             }
         }
+
+
+
     }
 }

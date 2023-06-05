@@ -68,14 +68,56 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Formularios\ahorro.aspx" />
+    <Content Include="Formularios\Comparacion.aspx" />
+    <Content Include="Formularios\estadisticas.aspx" />
+    <Content Include="Formularios\estadisticas_gastos.aspx" />
+    <Content Include="Formularios\FrmImagen.aspx" />
     <Content Include="Formularios\Gasto.aspx" />
     <Content Include="Formularios\Index.aspx" />
     <Content Include="Formularios\Login.aspx" />
     <Content Include="Formularios\Perfil.aspx" />
+    <Content Include="Formularios\presupuesto.aspx" />
+    <Content Include="Formularios\recordatorio.aspx" />
     <Content Include="Formularios\RegistroUsuarios.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios\ahorro.aspx.cs">
+      <DependentUpon>ahorro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\ahorro.aspx.designer.cs">
+      <DependentUpon>ahorro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Comparacion.aspx.cs">
+      <DependentUpon>Comparacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\Comparacion.aspx.designer.cs">
+      <DependentUpon>Comparacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\estadisticas.aspx.cs">
+      <DependentUpon>estadisticas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\estadisticas.aspx.designer.cs">
+      <DependentUpon>estadisticas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\estadisticas_gastos.aspx.cs">
+      <DependentUpon>estadisticas_gastos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\estadisticas_gastos.aspx.designer.cs">
+      <DependentUpon>estadisticas_gastos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmImagen.aspx.cs">
+      <DependentUpon>FrmImagen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmImagen.aspx.designer.cs">
+      <DependentUpon>FrmImagen.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Gasto.aspx.cs">
       <DependentUpon>Gasto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -97,6 +139,11 @@
     <Compile Include="Formularios\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\ModeloAhorros.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloAhorros.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\ModeloGastos.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -109,12 +156,26 @@
     <Compile Include="Formularios\Perfil.aspx.designer.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\presupuesto.aspx.cs">
+      <DependentUpon>presupuesto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\presupuesto.aspx.designer.cs">
+      <DependentUpon>presupuesto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Principal.Master.cs">
       <DependentUpon>Principal.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Formularios\Principal.Master.designer.cs">
       <DependentUpon>Principal.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\recordatorio.aspx.cs">
+      <DependentUpon>recordatorio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\recordatorio.aspx.designer.cs">
+      <DependentUpon>recordatorio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formularios\RegistroUsuarios.aspx.cs">
       <DependentUpon>RegistroUsuarios.aspx</DependentUpon>
@@ -127,6 +188,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Formularios\Principal.Master" />
+    <Content Include="Formularios\ModeloAhorros.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>ModeloAhorros.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Formularios\ModeloAhorros.dbml.layout">
+      <DependentUpon>ModeloAhorros.dbml</DependentUpon>
+    </None>
     <Content Include="Formularios\ModeloGastos.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>ModeloGastos.designer.cs</LastGenOutput>

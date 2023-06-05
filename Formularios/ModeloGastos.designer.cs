@@ -34,7 +34,6 @@ namespace PaginaAhorro.Formularios
     partial void Updategasto(gasto instance);
     partial void Deletegasto(gasto instance);
         #endregion
-
         public ModeloGastosDataContext() :
                 base(global::System.Configuration.ConfigurationManager.ConnectionStrings["ConexionBDProyecto"].ConnectionString, mappingSource)
         {
@@ -73,9 +72,9 @@ namespace PaginaAhorro.Formularios
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.actualizarGastos")]
-		public int actualizarGastos([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Id", DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> monto, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fecha_limite)
+		public int actualizarGastos([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Id", DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> monto, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> progreso, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fecha_limite, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string estado)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, nombre, monto, fecha_limite);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, nombre, monto, progreso, fecha_limite, estado);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -94,9 +93,9 @@ namespace PaginaAhorro.Formularios
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.insertarGastos")]
-		public int insertarGastos([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Id", DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> monto, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fecha_creacion, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fecha_limite)
+		public int insertarGastos([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Id", DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> monto, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> progreso, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fecha_creacion, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fecha_limite)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, nombre, monto, fecha_creacion, fecha_limite);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, nombre, monto, progreso, fecha_creacion, fecha_limite);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -113,9 +112,13 @@ namespace PaginaAhorro.Formularios
 		
 		private System.Nullable<double> _monto;
 		
+		private System.Nullable<double> _progreso;
+		
 		private System.Nullable<System.DateTime> _fecha_creacion;
 		
 		private System.Nullable<System.DateTime> _fecha_limite;
+		
+		private string _Estado;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -127,10 +130,14 @@ namespace PaginaAhorro.Formularios
     partial void OnnombreChanged();
     partial void OnmontoChanging(System.Nullable<double> value);
     partial void OnmontoChanged();
+    partial void OnprogresoChanging(System.Nullable<double> value);
+    partial void OnprogresoChanged();
     partial void Onfecha_creacionChanging(System.Nullable<System.DateTime> value);
     partial void Onfecha_creacionChanged();
     partial void Onfecha_limiteChanging(System.Nullable<System.DateTime> value);
     partial void Onfecha_limiteChanged();
+    partial void OnEstadoChanging(string value);
+    partial void OnEstadoChanged();
     #endregion
 		
 		public gasto()
@@ -198,6 +205,26 @@ namespace PaginaAhorro.Formularios
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_progreso", DbType="Float")]
+		public System.Nullable<double> progreso
+		{
+			get
+			{
+				return this._progreso;
+			}
+			set
+			{
+				if ((this._progreso != value))
+				{
+					this.OnprogresoChanging(value);
+					this.SendPropertyChanging();
+					this._progreso = value;
+					this.SendPropertyChanged("progreso");
+					this.OnprogresoChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_creacion", DbType="Date")]
 		public System.Nullable<System.DateTime> fecha_creacion
 		{
@@ -238,6 +265,26 @@ namespace PaginaAhorro.Formularios
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="NVarChar(50)")]
+		public string Estado
+		{
+			get
+			{
+				return this._Estado;
+			}
+			set
+			{
+				if ((this._Estado != value))
+				{
+					this.OnEstadoChanging(value);
+					this.SendPropertyChanging();
+					this._Estado = value;
+					this.SendPropertyChanged("Estado");
+					this.OnEstadoChanged();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -268,9 +315,13 @@ namespace PaginaAhorro.Formularios
 		
 		private System.Nullable<double> _monto;
 		
+		private System.Nullable<double> _progreso;
+		
 		private System.Nullable<System.DateTime> _fecha_creacion;
 		
 		private System.Nullable<System.DateTime> _fecha_limite;
+		
+		private string _Estado;
 		
 		public buscarGastosResult()
 		{
@@ -324,6 +375,22 @@ namespace PaginaAhorro.Formularios
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_progreso", DbType="Float")]
+		public System.Nullable<double> progreso
+		{
+			get
+			{
+				return this._progreso;
+			}
+			set
+			{
+				if ((this._progreso != value))
+				{
+					this._progreso = value;
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_creacion", DbType="Date")]
 		public System.Nullable<System.DateTime> fecha_creacion
 		{
@@ -352,6 +419,22 @@ namespace PaginaAhorro.Formularios
 				if ((this._fecha_limite != value))
 				{
 					this._fecha_limite = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="NVarChar(50)")]
+		public string Estado
+		{
+			get
+			{
+				return this._Estado;
+			}
+			set
+			{
+				if ((this._Estado != value))
+				{
+					this._Estado = value;
 				}
 			}
 		}

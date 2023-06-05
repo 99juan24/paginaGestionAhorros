@@ -28,6 +28,16 @@ namespace PaginaAhorro.Formularios
                 this.lblusuario.Text = leer["Apellidos"].ToString() + " , " + leer["Nombres"].ToString();
                 ImgPerfil.ImageUrl = "/Formularios/FrmImagen.aspx?id=" + id;
                 conexion.Close();
+                if (!IsPostBack)
+                {
+                    // Obtener el valor actualizado del presupuesto
+                    decimal totalPresupuesto = ObtenerTotalPresupuesto();
+
+                    // Actualizar el texto del Label
+                    lblValorPresupuesto.Text = totalPresupuesto.ToString("C");
+                }
+
+
             }
             else
             {
@@ -44,5 +54,59 @@ namespace PaginaAhorro.Formularios
             Session.Remove("usuariologueado");
             Response.Redirect("/Formularios/Login.aspx");
         }
+
+        public void ActualizarValorPresupuesto(decimal totalPresupuesto)
+        {
+            lblValorPresupuesto.Text = totalPresupuesto.ToString("C");
+        }
+
+        private decimal ObtenerTotalPresupuesto()
+        {
+            decimal total = 0;
+
+            // Establecer la cadena de conexión con tu base de datos
+            string connectionString = ConfigurationManager.ConnectionStrings["ConexionBDProyecto"].ConnectionString;
+
+            // Query SQL para obtener el valor total del presupuesto
+            string query = "SELECT SUM(Cantidad) FROM presupuesto";
+
+            // Crear la conexión y el comando SQL
+            using (SqlConnection conexion = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, conexion);
+
+                // Abrir la conexión y ejecutar el comando
+                conexion.Open();
+                object result = command.ExecuteScalar();
+
+                if (result != null && result != DBNull.Value)
+                {
+                    total = Convert.ToDecimal(result);
+                }
+
+                conexion.Close();
+            }
+
+            return total;
+        }
+        public void ActualizarPresupuesto(decimal monto)
+        {
+            decimal presupuestoActual = ObtenerTotalPresupuesto();
+            decimal presupuestoRestante = presupuestoActual - monto;
+
+            // Actualizar el valor del presupuesto
+            ActualizarValorPresupuesto(presupuestoRestante);
+
+            // Verificar si el presupuesto restante es menor a 300,000
+            if (presupuestoRestante < 300000)
+            {
+                // Generar la alerta
+                ScriptManager.RegisterStartupScript(this, GetType(), "PresupuestoAlerta", "alert('¡Atención! El presupuesto está por agotarse.');", true);
+            }
+        }
+
+
+
+
     }
 }

@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <title>Inicio de Sesión</title>
 </head>
-<body style="background-color:#508bfc;">
+<body style="background-color:#A9DFBF;">
 
     <form id="frmlogin" runat="server" class="vh-100">
         <div class="container py-5 h-100">

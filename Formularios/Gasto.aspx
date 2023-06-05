@@ -36,6 +36,10 @@
         <asp:TextBox ID="txtmonto" runat="server" Width="274px"></asp:TextBox>
         <br />
         <br />
+        <asp:Label ID="Label7" runat="server" Text="Progresol gasto:" style="color: white;" ></asp:Label>
+        <asp:TextBox ID="txtprogreso" runat="server" Width="274px"></asp:TextBox>
+        <br />
+        <br />
         <asp:Label ID="Label3" runat="server" Text="Fecha creacion:" style="color: white;"></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
         <asp:TextBox ID="txtfechacreacion" runat="server" TextMode="Date" Width="274px"></asp:TextBox>
@@ -72,6 +76,12 @@
         <SortedDescendingCellStyle BackColor="#FCF6C0" />
         <SortedDescendingHeaderStyle BackColor="#820000" />
     </asp:GridView>
+        <br />
+        <br />
+        <br />
+
+
           </div></div>
-    <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="Sitio_Web_Full_Produccion.Formularios.ModeloProductosDataContext" EntityTypeName="" Select="new (Id, nombre, monto, fecha_creacion,fecha_limite)" TableName="gasto" OnSelecting="LinqDataSource1_Selecting"></asp:LinqDataSource>
+    
+    <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="Sitio_Web_Full_Produccion.Formularios.ModeloProductosDataContext" EntityTypeName="" Select="new (Id, nombre, monto, fecha_creacion,fecha_limite,progreso,estado)" TableName="gasto" OnSelecting="LinqDataSource1_Selecting"></asp:LinqDataSource>
 </asp:Content>
